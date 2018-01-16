@@ -29,6 +29,8 @@
         <td><%= book.image %></td>
         <td><%= book.abstract %></td>
         <td><%= book.user %></td>
+        <td><%= link_to like_book_path(book), method: :put %></td>
+        <td><%= link_to dislike_book_path(book), method: :put %></td>
         <td><%= link_to 'Show', book %></td>
         <td><%= link_to 'Edit', edit_book_path(book) %></td>
         <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>

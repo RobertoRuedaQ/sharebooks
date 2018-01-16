@@ -4,8 +4,6 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
-
-
     @books = Book.search(params[:term])
   end
 
@@ -61,6 +59,20 @@ class BooksController < ApplicationController
       format.html { redirect_to books_url, notice: 'Book was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+
+
+  def liked 
+    @book = Book.find(params[:id])
+    @book.liked_by current_user
+    redirect_to books_path
+  end  
+
+  def unliked
+    @book = Book.find(params[:id])
+    @book.unliked_by current_user
+    redirect_to books_path
   end
 
   private

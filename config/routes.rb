@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
-  resources :books
+
+
+  resources :books do 
+    member do
+      put "like", to: "books#liked"
+      put "dislike", to: "books#disliked"
+    end
+  end
+
+
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'
