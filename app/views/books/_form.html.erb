@@ -12,34 +12,40 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :title %>
+    <%= form.label :title, t('Título') %>
     <%= form.text_field :title, id: :book_title %>
   </div>
 
   <div class="field">
-    <%= form.label :author %>
+    <%= form.label :author, t('Autor') %>
     <%= form.text_field :author, id: :book_author %>
   </div>
 
   <div class="field">
-    <%= form.label :pages %>
+    <%= form.label :pages, t('Número de páginas') %>
     <%= form.number_field :pages, id: :book_pages %>
   </div>
 
   <div class="field">
-    <%= form.label :image %>
+    <%= form.label :image, t('Portada') %>
     <%= form.file_field :image, id: :book_image %>
   </div>
 
   <div class="field">
-    <%= form.label :abstract %>
+    <%= form.label :abstract, t('Resumen') %>
     <%= form.text_area :abstract, id: :book_abstract %>
   </div>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, id: :book_user_id %>
+    <%= form.hidden_field :user_id, id: :book_user_id, value: current_user.id %>
   </div>
+
+  <div class="field">
+    <%= form.label :category_id, t('Categoría') %>
+    <%= form.collection_select :category_id, Category.all, :id, :name, include_blank: true %>
+  </div>
+
+
 
   <div class="actions">
     <%= form.submit %>

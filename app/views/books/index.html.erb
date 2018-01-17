@@ -7,37 +7,26 @@
   <%= submit_tag 'Search' %>
 <% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Author</th>
-      <th>Pages</th>
-      <th>Image</th>
-      <th>Abstract</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @books.each do |book| %>
-      <tr>
-        <td><%= book.title %></td>
-        <td><%= book.author %></td>
-        <td><%= book.pages %></td>
-        <td><%= book.image %></td>
-        <td><%= book.abstract %></td>
-        <td><%= book.user %></td>
-        <td><%= link_to like_book_path(book), method: :put %></td>
-        <td><%= link_to dislike_book_path(book), method: :put %></td>
-        <td><%= link_to 'Show', book %></td>
-        <td><%= link_to 'Edit', edit_book_path(book) %></td>
-        <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% @books.each do |book| %>
+<div id="movie-card-list" style="background-image: book.image_url">
+  <!-- Card 1: Blade Runner -->
+  <div class="movie-card">
+    <div class="color-overlay">
+      <div class="movie-content">
+        <div class="movie-header">
+          <h1 class="movie-title"><%= book.title %></h1>
+          <h4 class="movie-info">(<%= book.pages %>) <%= book.author %></h4>
+        </div>
+        <p class="movie-desc"><%= book.abstract %></p>
+        <%= link_to "me gusta", like_book_path(book), method: :put, class: "btn btn-success btn-xs" %>
+        <%= link_to "naaaah", dislike_book_path(book), method: :put, class: "btn btn-warning btn-xs" %>
+
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>
 
 <br>
 

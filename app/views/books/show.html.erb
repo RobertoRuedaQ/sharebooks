@@ -17,7 +17,7 @@
 
 <p>
   <strong>Image:</strong>
-  <%= @book.image %>
+  <%= image_tag(@book.image_url, :width => 600, :height => 600) if @book.image.present? %>
 </p>
 
 <p>
