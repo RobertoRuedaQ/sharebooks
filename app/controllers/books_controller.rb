@@ -4,6 +4,7 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
+    @sidebar = true
     @books = Book.search(params[:term])
   end
 
@@ -83,6 +84,6 @@ class BooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params.require(:book).permit(:title, :author, :pages, :image, :abstract, :user_id)
+      params.require(:book).permit(:title, :author, :pages, :image, :abstract, :user_id, :category_id)
     end
 end

@@ -8,41 +8,60 @@
 
   </head>  
   <body>
-      <nav class="navbar navbar-fixed-top"> 
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-2 nav">
-              Sharebook
-            </div>
-            <div class="collapse navbar-collapse">
-              <div class="col-md-6">
-                <ul class="nav navbar-nav">
-                  <li><%= link_to "BLOG", root_path %></li>
-                </ul>
-              </div>
-              <div class="col-md-4">
-                <ul class="nav navbar-nav">
-                  <% if user_signed_in? %>
-                  <li><%= link_to "Hola #{current_user.first_name}!", root_path%></li> 
-                  <li><%= link_to 'Salir', destroy_user_session_path, method: :delete%></li>
 
-                <%else%>
-                  <li><%= link_to "Inicia Sesión", new_user_session_path %></li>
-                  <li><%= link_to "Registrate", new_user_registration_path %></li>
-                <%end%>
-                </ul>
-              </div>
-            </div>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+   <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+     <span class="sr-only">Toggle navigation</span>
+     <span class="icon-bar"></span>
+     <span class="icon-bar"></span>
+     <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#">Sharebooks</a>
+   </div>
+   
+   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav navbar-right">
+      <% if user_signed_in? %>
+        <li><%= link_to root_path do%>
+          <span class="glyphicon glyphicon-user"></span><%= "Hi #{current_user.first_name}!" %>
+          <%end %>
+        </li> 
+        <li><%= link_to destroy_user_session_path, method: :delete do %>
+          <span class="glyphicon glyphicon-log-out"></span>Log Out
+          <%end %>
+        </li>
+
+      <%else%>
+        <li><%= link_to new_user_session_path do%>
+           <span class="glyphicon glyphicon-log-in"></span> Log In
+           <%end %>
+        </li>
+        <li><%= link_to new_user_registration_path do%>
+          <span class="glyphicon glyphicon-log-plus-sign"></span> Sign In
+          <%end %>
+        </li>
+      <%end %>
+    </ul>
+   </div>
+  </div>
+  <!-- /.container -->
+  </nav>
+  <!-- Page Content -->
+      <div class="container main-content">
+        <div class="row">
+          <% if @sidebar %>
+            <%= render 'sidebar' %>
+          <%end %>
+          <div class="col-md-9">
+            <%= yield %>
           </div>
         </div>
-        <div >
-        </div>
-      </nav>
-
-
-  	<div class="container">
-	    <%= yield %>
-  	</div>
+      </div>
+   </div>
+  </div>
+ </div>
 
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <script
