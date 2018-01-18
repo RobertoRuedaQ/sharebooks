@@ -37,6 +37,18 @@
           <%= f.label :age, t('Edad') %><br />
           <%= f.number_field :age, autocomplete: "off" %>
         </div>
+
+        <div class="field">
+          <%= f.label :image, t('Imagen de perfil') %><br />
+          <%= f.file_field :image %>
+        </div>
+
+        <div class="field">
+          <%= f.label :about, t('Acerca de ti') %><br />
+          <%= f.text_area :about, autocomplete: "off" %>
+        </div>
+
+
       </div>
 
       <div class="col-md-6">

@@ -24,8 +24,8 @@
    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav navbar-right">
       <% if user_signed_in? %>
-        <li><%= link_to root_path do%>
-          <span class="glyphicon glyphicon-user"></span><%= "Hi #{current_user.first_name}!" %>
+        <li><%= link_to profile_path(current_user) do%>
+          <span class="glyphicon glyphicon-user"></span><%= "Hi #{current_user.first_name}! (profile)" %>
           <%end %>
         </li> 
         <li><%= link_to destroy_user_session_path, method: :delete do %>

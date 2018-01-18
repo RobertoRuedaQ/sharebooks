@@ -1,0 +1,10 @@
+<h1><%= @user.first_name %> <%= @user.first_name %></h1>
+<span><%= @user.about %></span>
+
+
+<% @user.books.each do |book| %>
+<div class="container">
+  <h3><%= book.name %> - <%= book.category.name %></h3>  
+  <span><%= book.description %></span>
+</div>
+<%end %>
