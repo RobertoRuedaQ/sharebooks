@@ -1,78 +1,84 @@
-<h2>Registrarse</h2>
+<div id="login-overlay" class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-body">
+              <div class="row">
+                  <div class="col-md-6">
+                      <div class="well">
+                        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                            <%= devise_error_messages! %>
+                              <div class="form-group">
+                                  <%= f.label :email, class: 'control-label' %><br />
+                                  <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+                                  <span class="help-block"></span>
+                              </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+                              <div class="form-group">
+                                  <%= f.label :password, class: 'control-label' %>
+                                  <% if @minimum_password_length %>
+                                  <em>Mínimo (<%= @minimum_password_length %>) caracteres</em>
+                                   <% end %>
+                                  <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+                                  <span class="help-block"></span>
+                              </div>
 
-    <div class="col-md-12">
-      <div class="col-md-6">
-        <div class="field">
-          <%= f.label :email, t('Correo electrónico') %><br />
-          <%= f.email_field :email, autofocus: true %>
-        </div>
+                              <div class="form-group">
+                                  <%= f.label :password_confirmation, class: 'control-label' %><br />
+                                  <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+                                  <span class="help-block"></span>
+                              </div>
 
-        <div class="field">
-          <%= f.label :password, t('Contraseña') %>
-          <% if @minimum_password_length %>
-          <em>Mínimo (<%= @minimum_password_length %>) caracteres</em>
-          <% end %><br />
-          <%= f.password_field :password, autocomplete: "off" %>
-        </div>
+                              <div class="form-group">
+                                  <%= f.label :first_name, class: 'control-label' %><br />
+                                  <%= f.text_field :first_name, autocomplete: "off", class: 'form-control' %>
+                                  <span class="help-block"></span>
+                              </div>
 
-        <div class="field">
-          <%= f.label :password_confirmation, t('Confirmar contraseña') %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "off" %>
-        </div>
+                              <div class="form-group">
+                                  <%= f.label :last_name, class: 'control-label' %><br />
+                                  <%= f.text_field :last_name, autocomplete: "off", class: 'form-control' %>
+                                  <span class="help-block"></span>
+                              </div>
 
-        <div class="field">
-          <%= f.label :first_name, t('Nombre') %><br />
-          <%= f.text_field :first_name, autocomplete: "off" %>
-        </div>
+                              <div class="form-group">
+                                  <%= f.label :age, class: 'control-label' %><br />
+                                  <%= f.number_field :age, autocomplete: "off", class: 'form-control' %>
+                                  <span class="help-block"></span>
+                              </div>
 
-        <div class="field">
-          <%= f.label :last_name, t('Apellido') %><br />
-          <%= f.text_field :last_name, autocomplete: "off" %>
-        </div>
+                              <div class="form-group">
+                                  <%= f.label :image, class: 'control-label' %><br />
+                                  <%= f.file_field :image %>
+                                  <span class="help-block"></span>
+                              </div>
 
-        <div class="field">
-          <%= f.label :age, t('Edad') %><br />
-          <%= f.number_field :age, autocomplete: "off" %>
-        </div>
-
-        <div class="field">
-          <%= f.label :image, t('Imagen de perfil') %><br />
-          <%= f.file_field :image %>
-        </div>
-
-        <div class="field">
-          <%= f.label :about, t('Acerca de ti') %><br />
-          <%= f.text_area :about, autocomplete: "off" %>
-        </div>
-
-
+                              <div class="form-group">
+                                  <%= f.label :about, class: 'control-label' %><br />
+                                  <%= f.text_area :about, autocomplete: "off", class: 'form-control' %>
+                                  <span class="help-block"></span>
+                              </div>
+                              
+                              
+                              <%= f.submit "Sign In", class: "btn btn-success btn-block" %>  
+                      </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <div class="checkbox">
+                        <%= f.label :interests, class: 'control-label'%>
+                        <%= f.collection_check_boxes :interests, Category.all, :id, :name do |b| %>
+                        <ul>
+                          <li>
+                            <%= b.check_box%>
+                            <%= b.label  %> 
+                          </li>
+                        </ul>
+                        <%end %>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+          </div>
       </div>
-
-      <div class="col-md-6">
-        <div class="field">
-          <%= f.label :interests, t('Intereses')%><br />
-          <%= f.collection_check_boxes :interests, Category.all, :id, :name do |b| %>
-            <%= b.label  %>
-            <%= b.check_box %>
-          <%end %>  
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-12">
-      <div class="col-md-4"></div>
-      <div class="col-md-4">
-        <div class="actions">
-          <%= f.submit "Sign up" %>
-        </div>
-      </div>
-      <div class="col-md-4"></div>
-    </div>
-
+  </div>
 <% end %>
 
-
-<%= render "devise/shared/links" %>

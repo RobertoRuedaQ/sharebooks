@@ -6,6 +6,10 @@ p{
 	font-family: "roboto", sans-serif;
 }
 
+input[type=checkbox]{
+	margin-left: 20px;
+}
+
 .main-content{
 	padding-top: 40px;
 }
@@ -24,4 +28,8 @@ p{
 
 .books_in_profile{
 	padding: 15px;
+}
+
+.profile_pic{
+	margin: 10px;
 }

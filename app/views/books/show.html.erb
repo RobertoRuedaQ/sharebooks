@@ -1,55 +1,62 @@
 <p id="notice"><%= notice %></p>
+<div class="well">
+  <p>
+    <strong>Title:</strong>
+    <%= @book.title %>
+  </p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @book.title %>
-</p>
+  <p>
+    <strong>Author:</strong>
+    <%= @book.author %>
+  </p>
 
-<p>
-  <strong>Author:</strong>
-  <%= @book.author %>
-</p>
+  <p>
+    <strong>Pages:</strong>
+    <%= @book.pages %>
+  </p>
 
-<p>
-  <strong>Pages:</strong>
-  <%= @book.pages %>
-</p>
+  <p>
+    <strong>Image:</strong>
+    <%= image_tag(@book.image_url, :width => 600, :height => 600) if @book.image.present? %>
+  </p>
 
-<p>
-  <strong>Image:</strong>
-  <%= image_tag(@book.image_url, :width => 600, :height => 600) if @book.image.present? %>
-</p>
+  <p>
+    <strong>Abstract:</strong>
+    <%= @book.abstract %>
+  </p>
 
-<p>
-  <strong>Abstract:</strong>
-  <%= @book.abstract %>
-</p>
+  <p>
+    <strong>User:</strong>
+    <%= @book.user.first_name %> <%= @book.user.last_name %>
+  </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @book.user.first_name %> <%= @book.user.last_name %>
-</p>
+  <hr>
 
-<hr>
+  
+</div>
 
 <% @book.comments.each do |comment| %>
-<p><%= comment.user.first_name %> comentó:</p>
-<p><%= comment.comment %></p> 
+  <div class="container">
+    <div class="well">
+      <p><%= comment.user.first_name %> say:</p>
+      <p><%= comment.comment %></p> 
+    </div>
+  </div>
 <%end %>
 
 
-<% if signed_in? %>
-  <%= form_for([@book, @book.comments.build]) do |f| %>
-    <%= f.label :coment %>
-    <%= f.text_area :comment %>
-    <%= f.hidden_field :user_id, value: current_user.id %>
-    <%= f.hidden_field :book_id, value: @book.id %>
-    <%= f.submit %>
-  <%end %> 
-<%end %>
+  <% if signed_in? %>
+    <%= form_for([@book, @book.comments.build]) do |f| %>
+      <%= f.label :coment, class: 'control-label'  %>
+      <%= f.text_area :comment, class: 'form-control' %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :book_id, value: @book.id %>
+      <br>
+      <%= f.submit %>
+    <%end %> 
+  <%end %>
+  <br>
+  
+  
 
-<% if current_user == @book.user %>
-  <%= link_to 'Edit', edit_book_path(@book) %>
-<%end  %>
-
-<%= link_to 'Back', books_path %>
+  <%= link_to 'Back', books_path %>
