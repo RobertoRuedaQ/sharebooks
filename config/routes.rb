@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
 
-  resources :books do 
+  resources :books do
+    resources :comments
     member do
       put "like", to: "books#liked"
       put "dislike", to: "books#disliked"
@@ -15,7 +16,7 @@ Rails.application.routes.draw do
   }
 
   resources :profiles, only: [:index, :show]
-
+  
   root "books#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

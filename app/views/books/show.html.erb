@@ -30,6 +30,24 @@
   <%= @book.user.first_name %> <%= @book.user.last_name %>
 </p>
 
+<hr>
+
+<% @book.comments.each do |comment| %>
+<p><%= comment.user.first_name %> comentó:</p>
+<p><%= comment.comment %></p> 
+<%end %>
+
+
+<% if signed_in? %>
+  <%= form_for([@book, @book.comments.build]) do |f| %>
+    <%= f.label :coment %>
+    <%= f.text_area :comment %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :book_id, value: @book.id %>
+    <%= f.submit %>
+  <%end %> 
+<%end %>
+
 <% if current_user == @book.user %>
   <%= link_to 'Edit', edit_book_path(@book) %>
 <%end  %>
