@@ -5,7 +5,19 @@ class BooksController < ApplicationController
   # GET /books.json
   def index
     @sidebar = true
-    @books = Book.search(params[:term])
+    @categories = Category.all
+
+    if params[:category] 
+    @books = Book.where(category_id: params[:category])
+      if @books.size.zero? 
+        @books = Book.all
+      end 
+    else 
+      @books = Book.all
+    end
+    
+    
+
   end
 
   # GET /books/1

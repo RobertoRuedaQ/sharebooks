@@ -5,6 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
+
+
 Category.create(code:0, name: "Generalidades")
 Category.create(code:100, name: "Filosofía y psicología")
 Category.create(code:200, name: "Religión")
@@ -115,3 +118,10 @@ Category.create(code:900, name: "Historia y geografía")
 	Subcategory.create(code:970, name: "Historia de América del Norte", category_id: 10)
 	Subcategory.create(code:980, name: "Historia de América del Sur", category_id: 10)
 	Subcategory.create(code:990, name: "Historia de otras regio", category_id: 10)
+
+
+	User.create!(first_name: "John", last_name:" Doe", email:"johndoe@mail.com", password: "sharebooks", age: 30, interests: [1,9], about: "I really like reading awesome books and meet people with my interests!")
+
+	50.times do
+		Book.create!(title: Faker::Book.title, author: Faker::Book.author, pages: Faker::Number.between(50, 1000), user_id: 1, category_id:Faker::Number.between(1, 10), abstract: Faker::HarryPotter.quote )
+	end

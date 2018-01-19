@@ -1,10 +1,23 @@
-<h1><%= @user.first_name %> <%= @user.first_name %></h1>
-<span><%= @user.about %></span>
+<div class="container">
+	<h3><%= @user.first_name %> <%= @user.last_name %></h3>
+	<span><%= @user.about %></span>
+</div>
 
 
 <% @user.books.each do |book| %>
-<div class="container">
-  <h3><%= book.name %> - <%= book.category.name %></h3>  
-  <span><%= book.description %></span>
-</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<h3><%= link_to "#{book.title}", book_path(book) %></h3> 
+				<h4><%= book.author %></h4>
+				<h5><%= book.category.name %></h5>
+	  		<span><%= book.abstract %></span>
+			</div>
+			<div class="col-md-6">
+				<%= image_tag("#{book.image_url}" , height: '80', width: '60')  %>
+			</div>
+		</div>
+	</div>
 <%end %>
+
+
