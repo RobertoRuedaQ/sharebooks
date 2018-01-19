@@ -1,16 +1,27 @@
-Sharebook
+#Sharebook
 
-Sharebooks es un sistema de administración e intercambio de tu biblioteca personal con las personas conocidas.
+sharebook is a system to administrate your personal library and share with other people your passion for books. With Sharebook you can:
+
+-Add new books for your personal library.
+-Delete books from your library.
+-Update information from it.
+-Vote the books that you like.
+-Find books acourding the categories of the Dewey Clasification System.
 
 
-FUNCIONALIDADES
+##Development
 
-	*Crear registro de tus libros
-	*Actualizar registro de tus libros
-	*Borrar registro de tus libros
+the development of the app is in Ruby on Rails for the backend and Bootstrap as the framework for the front. 
 
-- Votar a favor o en contra de los titulos
-- Escribir comentarios sobre alguno de los títulos
-- Buscar un título, categoría o temas a afines en tu libreria personal o de los demás usuarios.
 
--listar libros según una categoría de tu interés.
+##Comming features
+
+-Exchange of books.
+-Blog.
+
+
+The development is still in process, the seed file already have a user with you may interact in the app:
+
+	username: johndoe@mail.com
+	password: sharebooks
+
