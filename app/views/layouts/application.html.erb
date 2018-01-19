@@ -5,7 +5,7 @@
     <%= csrf_meta_tags %>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto" rel="stylesheet">
   </head>  
   <body>
 
@@ -25,11 +25,11 @@
     <ul class="nav navbar-nav navbar-right">
       <% if user_signed_in? %>
         <li><%= link_to profile_path(current_user) do%>
-          <span class="glyphicon glyphicon-user"></span><%= "Hi #{current_user.first_name}! (profile)" %>
+          <span class="glyphicon glyphicon-user"></span> <%= "Hi #{current_user.first_name}! (profile)" %>
           <%end %>
         </li> 
         <li><%= link_to destroy_user_session_path, method: :delete do %>
-          <span class="glyphicon glyphicon-log-out"></span>Log Out
+          <span class="glyphicon glyphicon-log-out"></span> Log Out
           <%end %>
         </li>
 

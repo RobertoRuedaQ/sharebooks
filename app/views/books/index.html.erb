@@ -5,21 +5,23 @@
   <div class="row">
     <% group.collect do |book| %>
     <div class="col-sm-3 col-lg-3 col-md-3">
-      <%= link_to "#{book.user.first_name}", profile_path(book.user) %> es el dueño de este libro
+      <%= link_to "#{book.user.first_name}", profile_path(book.user) %> is the owner of this book
       <div class="thumbnail">
         <%= image_tag("#{book.image_url}" , height: '80', width: '60')  %>
        <div class="caption">
-        <h4><%= book.title %></h4>
+        <h4>  <%= link_to "#{book.title}", book_path(book)%></h4>
         <h5>(<%= book.pages %> pag.) <%= book.author %></h5>
         <h5><i><%= book.category.name %></i> </h5>
         <p><%= book.abstract %></p>
-        <div class="row">
-          <div class="col-sm-6">
-            <%= link_to "Like", like_book_path(book), method: :put, class: "btn btn-success " %>
-          </div>
-          <div class="col-sm-6">
-            <%= link_to "Dislike", dislike_book_path(book), method: :put, class: "btn btn-warning" %>
-          </div>
+        <div class="vote_button">
+          <div class="row">
+            <div class="col-sm-6">
+              <%= link_to "Like", like_book_path(book), method: :put, class: "btn btn-success " %>
+            </div>
+            <div class="col-sm-6">
+              <%= link_to "Dislike", dislike_book_path(book), method: :put, class: "btn btn-warning" %>
+            </div>
+          </div> 
         </div>
        </div>
       </div>

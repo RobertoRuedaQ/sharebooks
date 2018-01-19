@@ -1,23 +1,24 @@
+
 <div class="container">
-	<h3><%= @user.first_name %> <%= @user.last_name %></h3>
-	<span><%= @user.about %></span>
+	<div class="row">
+		<div class="col-md-4 thumbnail">
+			<img src="http://www.localcrimenews.com/wp-content/uploads/2013/07/default-user-icon-profile.png" alt="" class="img-responsive">
+		</div>
+		<div class="col-md-8 profile">
+			<h3><%= @user.first_name %> <%= @user.last_name %> - <%= @user.age %> years old</h3>
+			<span><%= @user.about %></span>
+		</div>
+	</div>
 </div>
 
 
-<% @user.books.each do |book| %>
 	<div class="container">
-		<div class="row">
-			<div class="col-md-6">
+			<% @user.books.each do |book| %>
 				<h3><%= link_to "#{book.title}", book_path(book) %></h3> 
 				<h4><%= book.author %></h4>
 				<h5><%= book.category.name %></h5>
 	  		<span><%= book.abstract %></span>
-			</div>
-			<div class="col-md-6">
-				<%= image_tag("#{book.image_url}" , height: '80', width: '60')  %>
-			</div>
-		</div>
+			<%end %>
 	</div>
-<%end %>
 
 

@@ -3,7 +3,8 @@
       <p class="lead">Categorías</p>
      <div class="list-group">
       <% @categories.each do |category| %>
-        <li><%= link_to "#{category.name}", params: {category:category.id}%></li> 
+      <%= link_to "#{category.name}", {params: {category:category.id}}, class: "list-group-item" %>
+        
       <%end %>
      </div>
     </div>
